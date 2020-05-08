@@ -1,0 +1,416 @@
+<view class="start_all" hidden="{{!showstart}}"><image class="start_all" src="./start.png"></image></view>
+<view class="start" hidden="{{!showinput}}">
+
+<view class="input_box" >
+<input class="input"  name="ch" bindinput="InputCharacter"></input>
+
+</view>
+
+<view class="input_btn"><image  bindtap="GetCharacter" src="./InputButton.png" class="input2"></image></view>
+</view>
+<view class="start_img_view" hidden="{{!showinput}}"><image class="start_xiezi" src="./xiezi.png"></image><image class="start_line" src="./line.png"></image></view>
+
+<view class="layer" bindtap="de_active"></view>
+
+<view class="set_1">
+<view class="table2"><view class="title" bindtap="re_input"><image src="./biaoti.png" class="title_img"></image><text class="title_img_cha">{{character}}</text></view></view>
+</view>
+
+<view class="set_2">
+<view class="set_2_2">
+<view class='contentWarp'>
+
+  <block wx:for="{{itemList}}" wx:key="id">
+
+    <view class='touchWrap' style='transform: scale({{item.scale}});top:{{item.top}}px;left:{{item.left}}px; z-index:{{item.active?100:1}}'>
+
+      <view class='imgWrap {{item.active? "touchActive":""}}' style="transform: rotate({{item.angle}}deg); border: {{item.active?4*item.oScale:0}}rpx #fff dashed;">
+
+        <image src='{{item.image}}' data-id='{{item.id}}' style='width:{{item.width}}px;height:{{item.height}}px;' bindtouchstart='WraptouchStart' bindtouchmove='WraptouchMove' bindtouchend='WraptouchEnd'  ></image>
+
+        <image class='x' src='./interface.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtap='deleteItem'></image>
+
+        <image class='o' src='./rotate.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtouchstart='oTouchStart' bindtouchmove='oTouchRotate'  bindtouchend='WraptouchEnd'></image>
+
+        <image class='zoom' src='./circle.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtouchstart='oTouchStart' bindtouchmove='oTouchZoom'  bindtouchend='WraptouchEnd'></image>
+        
+         <image class='zoom_second' src='./circle.png' style='transform: scale({{item.oScale}});transform-origin:center;' data-id='{{item.id}}' bindtouchstart='oTouchStart' bindtouchmove='oTouchZoom'  bindtouchend='WraptouchEnd'></image>
+
+      </view>
+
+    </view>
+
+  </block>
+ </view>
+</view>
+
+</view>
+<view class="two_btns">
+<image src="./pen.png" class="bt1" bindtap="opendraw"></image>
+<image src="./return.png" class="bt2" bindtap="ToReturn"></image>
+<image src="./save.png" class="bt3" bindtap="openMask"></image>
+</view>
+  
+
+<view class="set_3">
+<view class="set_3" bindtap="ToShow" hidden="{{hiddenName}}">
+<image class="toshow" src="./ToShow.png"></image>
+</view>
+<view class="notionview"><image class="notion" src="./notion.png"></image></view>
+
+
+<view class="set_4">
+<button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/1.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='1'>
+ <!--正面的框 -->
+ <view class='frame {{class1}}'>
+  <image src="./card/1..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class2}}'>
+  <image src="./card/1.png"></image>
+ </view>
+</view>
+</button>
+
+</view>
+
+
+
+<view class="set_4"><button class="btn" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/2.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='3' >
+ <!--正面的框 -->
+ <view class='frame {{class3}}'>
+  <image src="./card/2..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class4}}'>
+  <image src="./card/2.png"></image>
+ </view>
+</view>
+
+</button></view>
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/3.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='5'>
+ <!--正面的框 -->
+ <view class='frame {{class5}}'>
+  <image src="./card/3..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class6}}'>
+  <image src="./card/3.png"></image>
+ </view>
+</view>
+</button>
+</view>
+
+
+
+<view class="set_4"><button class="btn" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/4.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='7'>
+ <!--正面的框 -->
+ <view class='frame {{class7}}'>
+  <image src="./card/4..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class8}}'>
+  <image src="./card/4.png"></image>
+ </view>
+</view>
+</button></view>
+
+
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/5.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='9'>
+ <!--正面的框 -->
+ <view class='frame {{class9}}'>
+  <image src="./card/5..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class10}}'>
+  <image src="./card/5.png"></image>
+ </view>
+</view>
+</button></view>
+
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/6.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='11'>
+ <!--正面的框 -->
+ <view class='frame {{class11}}'>
+  <image src="./card/6..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class12}}'>
+  <image src="./card/6.png"></image>
+ </view>
+</view>
+</button></view>
+<!--7777777777,13-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/7.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='13'>
+ <!--正面的框 -->
+ <view class='frame {{class13}}'>
+  <image src="./card/7..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class14}}'>
+  <image src="./card/7.png"></image>
+ </view>
+</view>
+</button></view>
+<!--8,15-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/8.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='15'>
+ <!--正面的框 -->
+ <view class='frame {{class15}}'>
+  <image src="./card/8..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class16}}'>
+  <image src="./card/8.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--9,17-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/9.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='17'>
+ <!--正面的框 -->
+ <view class='frame {{class17}}'>
+  <image src="./card/9..png"></image>
+ </view>
+ <!--背面的框 -->
+ <view class='frame {{class18}}'>
+  <image src="./card/9.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--10,19-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/10.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='19'>
+ 
+ <view class='frame {{class19}}'>
+  <image src="./card/10..png"></image>
+ </view>
+
+ <view class='frame {{class20}}'>
+  <image src="./card/10.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--11,21-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/11.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='21'>
+
+ <view class='frame {{class21}}'>
+  <image src="./card/11..png"></image>
+ </view>
+
+ <view class='frame {{class22}}'>
+  <image src="./card/11.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--12,23-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/12.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='23'>
+
+ <view class='frame {{class23}}'>
+  <image src="./card/12..png"></image>
+ </view>
+
+ <view class='frame {{class24}}'>
+  <image src="./card/12.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--13,25-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/13.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='25'>
+
+ <view class='frame {{class25}}'>
+  <image src="./card/13..png"></image>
+ </view>
+
+ <view class='frame {{class26}}'>
+  <image src="./card/13.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--14,27-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/14.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='27'>
+
+ <view class='frame {{class27}}'>
+  <image src="./card/14..png"></image>
+ </view>
+
+ <view class='frame {{class28}}'>
+  <image src="./card/14.png"></image>
+ </view>
+</view>
+</button></view>
+
+
+<!--15,29-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/15.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='29'>
+
+ <view class='frame {{class29}}'>
+  <image src="./card/15..png"></image>
+ </view>
+
+ <view class='frame {{class30}}'>
+  <image src="./card/15.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--16,31-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/16.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='31'>
+
+ <view class='frame {{class31}}'>
+  <image src="./card/16..png"></image>
+ </view>
+
+ <view class='frame {{class32}}'>
+  <image src="./card/16.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--17,33-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/17.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='33'>
+
+ <view class='frame {{class33}}'>
+  <image src="./card/17..png"></image>
+ </view>
+
+ <view class='frame {{class34}}'>
+  <image src="./card/17.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--18,35-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/18.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='35'>
+
+ <view class='frame {{class35}}'>
+  <image src="./card/18..png"></image>
+ </view>
+
+ <view class='frame {{class36}}'>
+  <image src="./card/18.png"></image>
+ </view>
+</view>
+</button></view>
+
+
+<!--19,37-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/19.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='37'>
+
+ <view class='frame {{class37}}'>
+  <image src="./card/19..png"></image>
+ </view>
+
+ <view class='frame {{class38}}'>
+  <image src="./card/19.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--20,39-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/20.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='39'>
+
+ <view class='frame {{class39}}'>
+  <image src="./card/20..png"></image>
+ </view>
+
+ <view class='frame {{class40}}'>
+  <image src="./card/20.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--21,41-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/21.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='41'>
+
+ <view class='frame {{class41}}'>
+  <image src="./card/21..png"></image>
+ </view>
+
+ <view class='frame {{class42}}'>
+  <image src="./card/21.png"></image>
+ </view>
+</view>
+</button></view>
+
+<!--22,43-->
+<view class="set_4"><button class="btn"  bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd" bindlongtap="longClick" data-id='./card/22.png'>
+<view class='rotateCtn' bindtap='rotateFn' data-id='43'>
+
+ <view class='frame {{class43}}'>
+  <image src="./card/22..png"></image>
+ </view>
+
+ <view class='frame {{class44}}'>
+  <image src="./card/22.png"></image>
+ </view>
+</view>
+</button></view>
+
+</view>
+
+<view class='canvasWrap' hidden="{{!showCanvas}}">
+  <image class="resImg" bindlongtap="saveImg" src="{{canvasTemImg}}" mode="widthFix"></image>
+  <view class='btn_view'>
+   <image src="./draw_finish.png" class="btndraw1" bindtap="saveImg"></image>
+    <image src="./delete.png" class="btndraw3_" bindtap="disappearCanvas"></image>
+  </view>
+</view>
+
+<!-- 画布 -->
+
+
+<canvas  class='maskCanvas' canvas-id="maskCanvas" style='width:{{canvasWidth}}px; height:{{canvasHeight}}px;' ></canvas>
+
+<view class='canvasWrap_draw' hidden="{{!showCanvas_draw}}">
+<view class="container">
+    <view class="canvas_area">
+  <view class="border_layer">
+  <cover-image src="./delete.png" class="btndraw3" bindtap="closedraw"></cover-image>
+ 
+        <canvas canvas-id="canvasWrap_draw" 
+          class="myCanvas"
+          disable-scroll="false"
+          bindtouchstart="touchStart"
+          bindtouchmove="touchMove"
+          bindtouchend="touchEnd"
+          src="{{canvasTemImg_draw}}">
+     
+        </canvas>
+         </view>
+    </view>
+    <!--画布工具区域-->
+    <view class="canvas_tools">
+       
+         
+           
+             <image src="./draw_pen.png" class="bt1_draw" bindtap="colorSelect" data-param="#000000"></image>
+             <image src="./draw_eraser.png" class="bt2_draw"  bindtap="clearCanvas"></image>
+              <image src="./draw_clear.png" class="bt3_draw" bindtap="Clear"></image>
+              <image src="./draw_finish.png" class="btndraw1" bindtap="drawOn"></image>
+    </view>
+</view>
+</view>
